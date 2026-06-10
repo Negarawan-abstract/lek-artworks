@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEK ABSTRACT - Portfolio</title>
+    <style>
+        /* RESET STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #fafafa; 
+            color: #111111;
+            font-family: 'Courier New', Courier, monospace; 
+            overflow-x: hidden;
+            padding: 30px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* HEADER & NAV */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 80px;
+            border-bottom: 3px dashed #0044ff; 
+            padding-bottom: 20px;
+        }
+
+        .logo-area img {
+            max-width: 180px; 
+            height: auto;
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column; 
+            align-items: flex-end;
+            gap: 10px;
+        }
+
+        nav a {
+            color: #e60000; 
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #fff;
+            background-color: #111;
+            padding: 2px 8px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 150px;
+        }
+
+        .main-title {
+            font-size: 8vw; 
+            font-weight: 900;
+            line-height: 0.9;
+            color: #111;
+            z-index: 2;
+            pointer-events: none;
+            mix-blend-mode: difference; 
+        }
+
+        .hero-image-wrapper {
+            width: 100%;
+            max-width: 500px; 
+            align-self: flex-end;
+            margin-top: -40px;
+            z-index: 1;
+            border: 4px solid #111111;
+            box-shadow: 15px 15px 0px #0044ff; 
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+
+        .hero-meta {
+            margin-top: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #e60000;
+        }
+
+        /* SECTIONS COMMON STYLES */
+        .section-label {
+            font-size: 1.5rem;
+            background-color: #e60000;
+            color: white;
+            display: inline-block;
+            padding: 5px 15px;
+            margin-bottom: 60px;
+            transform: rotate(-2deg); 
+        }
+
+        /* PORTFOLIO GRID */
+        .works-section {
+            margin-bottom: 150px;
+        }
+
+        .abstract-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 100px 50px; 
+        }
+
+        .grid-item:nth-child(even) {
+            margin-top: 80px;
+        }
+
+        .grid-item {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: #111;
+        }
+
+        .art-frame {
+            width: 100%;
+            border: 3px solid #111;
+            overflow: hidden;
+            background-color: #111;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .art-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .grid-item:hover .art-frame {
+            transform: translate(-5px, -5px);
+            box-shadow: 8px 8px 0px #e60000; 
+        }
+
+        .grid-item:hover .art-frame img {
+            transform: scale(1.05);
+        }
+
+        .art-info {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            border-top: 2px solid #111;
+            padding-top: 8px;
+        }
+
+        .art-title {
+            color: #0044ff;
+        }
+
+        /* ABOUT SECTION (SUDAH DI-BOOM GEDE) */
+        .about-section {
+            margin-bottom: 150px;
+            border-top: 3px dashed #0044ff;
+            padding-top: 60px;
+        }
+
+        .about-content {
+            max-width: 1000px;
+            font-size: 2.5rem; 
+            line-height: 1.4;
+            font-weight: 900; 
+            text-transform: none; 
+            letter-spacing: -1px; 
+        }
+
+        /* CONTACT SECTION */
+        .contact-section {
+            margin-bottom: 100px;
+            border-top: 3px dashed #0044ff;
+            padding-top: 60px;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-links a {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #0044ff;
+            text-decoration: none;
+            transition: transform 0.2s;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .contact-links a:hover {
+            color: #e60000;
+            transform: translateX(10px); 
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header { margin-bottom: 40px; }
+            .abstract-grid {
+                grid-template-columns: 1fr; 
+                gap: 50px;
+            }
+            .grid-item:nth-child(even) {
+                margin-top: 0;
+            }
+            .main-title { font-size: 12vw; }
+            .about-content { font-size: 1.6rem; }
+            .contact-links a { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <div class="logo-area">
+                <img src="logo.png" alt="LEK Logo"> 
+            </div>
+            <nav>
+                <a href="#works">ARTWORKS</a>
+                <a href="#about">ABOUT</a>
+                <a href="#contact">CONTACT</a>
+            </nav>
+        </header>
+
+        <!-- HERO SECTION -->
+        <main class="hero">
+            <h1 class="main-title">LEK<br>ABSTRACT</h1>
+            <div class="hero-image-wrapper">
+                <img src="foto-profil.png" alt="Foto Profil Lek">
+            </div>
+            <div class="hero-meta">
+                <p>VISUAL ARTIST &bull; BOGOR, INDONESIA</p>
+                <p style="color: #0044ff; margin-top: 5px;">&darr; SCROLL INTO THE CHAOS</p>
+            </div>
+        </main>
+
+        <!-- PORTFOLIO SECTION -->
+        <section id="works" class="works-section">
+            <h2 class="section-label">SELECTED EXHIBITIONS</h2>
+            <div class="abstract-grid">
+                <!-- Karya 1 -->
+                <a href="#" class="grid-item">
+                    <div class="art-frame">
+                        <img src="porto1.png" alt="Abstrak 1">
+                    </div>
+                    <div class="art-info">
+                        <span class="art-title">Feel Be Better</span>
+                        <span>2026</span>
+                    </div>
+                </a>
+                <!-- Karya 2 -->
+                <a href="#" class="grid-item">
+                    <div class="art-frame">
+                        <img src="porto2.png" alt="Abstrak 2">
+                    </div>
+                    <div class="art-info">
+                        <span class="art-title">The Mind Will Never Die</span>
+                        <span>2026</span>
+                    </div>
+                </a>
+                <!-- Karya 3 -->
+                 <a href="#" class="grid-item">
+                    <div class="art-frame">
+                        <img src="porto3.png" alt="Abstrak 3">
+                    </div>
+                    <div class="art-info">
+                        <span class="art-title">Quiet The Amid Crowd</span>
+                        <span>2026</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="about-section">
+            <h2 class="section-label">ABOUT ME</h2>
+            <div class="about-content">
+                <p>Gua adalah seorang seniman visual asal Bogor yang berfokus pada eksplorasi bentuk-bentuk abstrak dan ekspresif. Lewat goresan kuas yang liar, kontras warna yang menabrak, dan energi yang intuitif, gua mencoba menumpahkan emosi murni ke dalam media digital maupun kanvas fisik.</p>
+                <br>
+                <p>Setiap karya seni adalah bentuk kekacauan yang terencana—sebuah dialog personal antara ketidaksengajaan dan kontrol estetika visual.</p>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="contact-section">
+            <h2 class="section-label">CONNECT</h2>
+            <div class="contact-links">
+                <!-- GANTI DENGAN EMAIL DAN SOSMED BARU LO -->
+                <a href="mailto:mzidan@gmail.com" target="_blank">EMAIL</a>
+                <a href="https://instagram.com/zidanngrwn" target="_blank">INSTAGRAM</a>
+                <a href="https://wa.me/628xxxxxxxxxx" target="_blank">WHATSAPP</a>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>

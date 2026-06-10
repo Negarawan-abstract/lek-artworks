@@ -3,13 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LEK ABSTRACT - Portfolio</title>
+    <title>LEK ABSTRACT / PORTFOLIO</title>
     <style>
-        /* RESET STYLES */
+        /* 1. RESET & VARIABLES */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #f4f4f0; /* Warna broken-white biar lebih premium */
+            --text-color: #111111;
+            --accent-blue: #0044ff;
+            --accent-red: #ff3333;
+            --font-main: 'Courier New', Courier, monospace;
         }
 
         html {
@@ -17,225 +25,249 @@
         }
 
         body {
-            background-color: #fafafa; 
-            color: #111111;
-            font-family: 'Courier New', Courier, monospace; 
-            overflow-x: hidden;
-            padding: 30px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            padding: 40px 20px;
+            line-height: 1.6;
         }
 
-        /* CONTAINER */
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* HEADER & NAV */
+        /* 2. HEADER & NAVIGATION */
         header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--text-color);
             margin-bottom: 80px;
-            border-bottom: 3px dashed #0044ff; 
-            padding-bottom: 20px;
         }
 
-        .logo-area img {
-            max-width: 180px; 
-            height: auto;
-            display: block;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: var(--text-color);
+            text-decoration: none;
         }
 
         nav {
             display: flex;
-            flex-direction: column; 
-            align-items: flex-end;
-            gap: 10px;
+            gap: 30px;
         }
 
         nav a {
-            color: #e60000; 
+            color: var(--text-color);
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            transition: color 0.2s;
-        }
-
-        nav a:hover {
-            color: #fff;
-            background-color: #111;
-            padding: 2px 8px;
-        }
-
-        /* HERO SECTION */
-        .hero {
+            font-size: 0.9rem;
             position: relative;
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 150px;
         }
 
-        .main-title {
-            font-size: 8vw; 
-            font-weight: 900;
-            line-height: 0.9;
-            color: #111;
-            z-index: 2;
-            pointer-events: none;
-            mix-blend-mode: difference; 
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent-red);
+            transition: width 0.3s ease;
         }
 
-        .hero-image-wrapper {
+        nav a:hover::after {
             width: 100%;
-            max-width: 500px; 
-            align-self: flex-end;
-            margin-top: -40px;
-            z-index: 1;
-            border: 4px solid #111111;
-            box-shadow: 15px 15px 0px #0044ff; 
         }
 
-        .hero-image-wrapper img {
-            width: 100%;
-            display: block;
-            height: auto;
-        }
-
-        .hero-meta {
-            margin-top: 30px;
-            font-size: 1rem;
-            font-weight: bold;
-            color: #e60000;
-        }
-
-        /* SECTIONS COMMON STYLES */
-        .section-label {
-            font-size: 1.5rem;
-            background-color: #e60000;
-            color: white;
-            display: inline-block;
-            padding: 5px 15px;
-            margin-bottom: 60px;
-            transform: rotate(-2deg); 
-        }
-
-        /* PORTFOLIO GRID */
-        .works-section {
-            margin-bottom: 150px;
-        }
-
-        .abstract-grid {
+        /* 3. HERO SECTION */
+        .hero {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 100px 50px; 
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 180px;
         }
 
-        .grid-item:nth-child(even) {
-            margin-top: 80px;
-        }
-
-        .grid-item {
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            color: #111;
-        }
-
-        .art-frame {
-            width: 100%;
-            border: 3px solid #111;
-            overflow: hidden;
-            background-color: #111;
-            margin-bottom: 15px;
-            transition: transform 0.3s ease;
-        }
-
-        .art-frame img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.4s ease;
-        }
-
-        .grid-item:hover .art-frame {
-            transform: translate(-5px, -5px);
-            box-shadow: 8px 8px 0px #e60000; 
-        }
-
-        .grid-item:hover .art-frame img {
-            transform: scale(1.05);
-        }
-
-        .art-info {
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            border-top: 2px solid #111;
-            padding-top: 8px;
-        }
-
-        .art-title {
-            color: #0044ff;
-        }
-
-        /* ABOUT SECTION (SUDAH DI-BOOM GEDE) */
-        .about-section {
-            margin-bottom: 150px;
-            border-top: 3px dashed #0044ff;
-            padding-top: 60px;
-        }
-
-        .about-content {
-            max-width: 1000px;
-            font-size: 2.5rem; 
-            line-height: 1.4;
-            font-weight: 900; 
-            text-transform: none; 
-            letter-spacing: -1px; 
-        }
-
-        /* CONTACT SECTION */
-        .contact-section {
-            margin-bottom: 100px;
-            border-top: 3px dashed #0044ff;
-            padding-top: 60px;
-        }
-
-        .contact-links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .contact-links a {
-            font-size: 2rem;
+        .hero-text h1 {
+            font-size: 7vw;
+            line-height: 0.85;
             font-weight: 900;
-            color: #0044ff;
+            text-transform: uppercase;
+            letter-spacing: -3px;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--accent-blue);
+        }
+
+        .hero-img {
+            border: 3px solid var(--text-color);
+            filter: grayscale(100%);
+            transition: filter 0.5s ease;
+        }
+
+        .hero-img:hover {
+            filter: grayscale(0%);
+        }
+
+        .hero-img img {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+
+        /* 4. SECTION LABEL */
+        .section-title {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 2px solid var(--text-color);
+            padding-bottom: 10px;
+            margin-bottom: 60px;
+            font-weight: bold;
+        }
+
+        /* 5. ARTWORKS WORKCASE (ALternating Layout) */
+        .work-list {
+            display: flex;
+            flex-direction: column;
+            gap: 120px;
+            margin-bottom: 180px;
+        }
+
+        .work-item {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            align-items: center;
             text-decoration: none;
-            transition: transform 0.2s;
-            display: inline-block;
+            color: var(--text-color);
+        }
+
+        .work-image {
+            grid-column: 1 / span 7;
+            border: 3px solid var(--text-color);
+            background-color: #e0e0e0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .work-image img {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+
+        .work-meta {
+            grid-column: 8 / span 5;
+            padding-left: 40px;
+            z-index: 2;
+        }
+
+        /* Layout untuk item genap (tukar posisi) */
+        .work-item:nth-child(even) .work-image {
+            grid-column: 6 / span 7;
+        }
+
+        .work-item:nth-child(even) .work-meta {
+            grid-column: 1 / span 5;
+            padding-left: 0;
+            padding-right: 40px;
+            text-align: right;
+        }
+
+        .work-meta .num {
+            font-size: 1rem;
+            color: var(--accent-red);
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .work-meta h3 {
+            font-size: 2.5rem;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            font-weight: 900;
+        }
+
+        .work-meta .year {
+            font-size: 1.1rem;
+            font-weight: bold;
+            opacity: 0.6;
+        }
+
+        /* 6. ABOUT SECTION */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.5fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 180px;
+        }
+
+        .about-text {
+            font-size: 2rem;
+            font-weight: bold;
+            line-height: 1.4;
+            text-align: justify;
+        }
+
+        .about-text span {
+            color: var(--accent-blue);
+        }
+
+        /* 7. CONTACT SECTION */
+        .contact-box {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .contact-box a {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--text-color);
+            text-decoration: none;
+            line-height: 1;
             width: fit-content;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
-        .contact-links a:hover {
-            color: #e60000;
-            transform: translateX(10px); 
+        .contact-box a:hover {
+            color: var(--accent-red);
+            transform: translateX(15px);
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            header { margin-bottom: 40px; }
-            .abstract-grid {
-                grid-template-columns: 1fr; 
-                gap: 50px;
+        /* 8. RESPONSIVE DESIGN */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
             }
-            .grid-item:nth-child(even) {
-                margin-top: 0;
+            .hero-text h1 { font-size: 12vw; }
+            .work-item, .work-item:nth-child(even) {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
             }
-            .main-title { font-size: 12vw; }
-            .about-content { font-size: 1.6rem; }
-            .contact-links a { font-size: 1.5rem; }
+            .work-image, .work-item:nth-child(even) .work-image {
+                width: 100%;
+            }
+            .work-meta, .work-item:nth-child(even) .work-meta {
+                padding: 0;
+                text-align: left;
+                width: 100%;
+            }
+            .work-meta h3 { font-size: 1.8rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .about-text { font-size: 1.4rem; }
+            .contact-box a { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -244,80 +276,85 @@
     <div class="container">
         <!-- HEADER -->
         <header>
-            <div class="logo-area">
-                <img src="logo.png" alt="LEK Logo"> 
-            </div>
+            <a href="#" class="logo">LEK ABSTRACT.</a>
             <nav>
-                <a href="#works">ARTWORKS</a>
+                <a href="#works">WORKS</a>
                 <a href="#about">ABOUT</a>
-                <a href="#contact">CONTACT</a>
+                <a href="#contact">CONNECT</a>
             </nav>
         </header>
 
-        <!-- HERO SECTION -->
-        <main class="hero">
-            <h1 class="main-title">LEK<br>ABSTRACT</h1>
-            <div class="hero-image-wrapper">
-                <img src="foto-profil.png" alt="Foto Profil Lek">
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-text">
+                <h1>CHAOS<br>INTO<br>ART</h1>
+                <p>VISUAL ARTIST // BOGOR, ID</p>
             </div>
-            <div class="hero-meta">
-                <p>VISUAL ARTIST &bull; BOGOR, INDONESIA</p>
-                <p style="color: #0044ff; margin-top: 5px;">&darr; SCROLL INTO THE CHAOS</p>
+            <div class="hero-img">
+                <!-- Ganti foto-profil.png dengan file lo, atau hapus tag img ini kalau gak mau pakai foto profil -->
+                <img src="foto-profil.png" alt="Lek Abstract Profile">
             </div>
-        </main>
+        </section>
 
-        <!-- PORTFOLIO SECTION -->
-        <section id="works" class="works-section">
-            <h2 class="section-label">SELECTED EXHIBITIONS</h2>
-            <div class="abstract-grid">
+        <!-- WORKS SECTION -->
+        <section id="works">
+            <h2 class="section-title">// SELECTED WORKS</h2>
+            <div class="work-list">
+                
                 <!-- Karya 1 -->
-                <a href="#" class="grid-item">
-                    <div class="art-frame">
-                        <img src="porto1.png" alt="Abstrak 1">
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="porto1.png" alt="Feel Be Better">
                     </div>
-                    <div class="art-info">
-                        <span class="art-title">Feel Be Better</span>
-                        <span>2026</span>
+                    <div class="work-meta">
+                        <span class="num">01/</span>
+                        <h3>Feel Be Better</h3>
+                        <span class="year">2026</span>
                     </div>
-                </a>
-                <!-- Karya 2 -->
-                <a href="#" class="grid-item">
-                    <div class="art-frame">
-                        <img src="porto2.png" alt="Abstrak 2">
+                </div>
+
+                <!-- Karya 2 (Ini yang kemarin pecah, gua ganti namanya jadi porto2.png) -->
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="porto2.png" alt="The Mind Will Never Die">
                     </div>
-                    <div class="art-info">
-                        <span class="art-title">The Chaos </span>
-                        <span>2026</span>
+                    <div class="work-meta">
+                        <span class="num">02/</span>
+                        <h3>The Mind Will Never Die</h3>
+                        <span class="year">2026</span>
                     </div>
-                </a>
+                </div>
+
                 <!-- Karya 3 -->
-                <a href="#" class="grid-item">
-                    <div class="art-frame">
-                        <img src="porto3.png" alt="Abstrak 3">
+                <div class="work-item">
+                    <div class="work-image">
+                        <img src="porto3.png" alt="Quiet Amid The Crowd">
                     </div>
-                    <div class="art-info">
-                        <span class="art-title">Quiet The Amid Crowd</span>
-                        <span>2026</span>
+                    <div class="work-meta">
+                        <span class="num">03/</span>
+                        <h3>Quiet Amid The Crowd</h3>
+                        <span class="year">2026</span>
                     </div>
-                </a>
+                </div>
+
             </div>
         </section>
 
         <!-- ABOUT SECTION -->
-        <section id="about" class="about-section">
-            <h2 class="section-label">ABOUT ME</h2>
-            <div class="about-content">
-                <p>Gua adalah seorang seniman visual asal Bogor yang berfokus pada eksplorasi bentuk-bentuk abstrak dan ekspresif. Lewat goresan kuas yang liar, kontras warna yang menabrak, dan energi yang intuitif, gua mencoba menumpahkan emosi murni ke dalam media digital maupun kanvas fisik.</p>
-                <br>
-                <p>Setiap karya seni adalah bentuk kekacauan yang terencana—sebuah dialog personal antara ketidaksengajaan dan kontrol estetika visual.</p>
+        <section id="about">
+            <h2 class="section-title">// BIOGRAPHY</h2>
+            <div class="about-grid">
+                <div></div>
+                <div class="about-text">
+                    Gua adalah seorang seniman visual asal <span>Bogor</span> yang bergerak di jalur abstrak ekspresif. Lewat distorsi bentuk, tabrakan warna yang kontras, dan goresan intuitif, gua menjadikan media digital maupun fisik sebagai tempat pelampiasan emosi murni. Setiap karya adalah sebuah eksperimen—dialog intim antara ketidaksengajaan dan kontrol visual.
+                </div>
             </div>
         </section>
 
         <!-- CONTACT SECTION -->
-        <section id="contact" class="contact-section">
-            <h2 class="section-label">CONNECT</h2>
-            <div class="contact-links">
-                <!-- GANTI DENGAN EMAIL DAN SOSMED BARU LO -->
+        <section id="contact">
+            <h2 class="section-title">// SAY HELLO</h2>
+            <div class="contact-box">
                 <a href="mailto:mzidan@gmail.com" target="_blank">EMAIL</a>
                 <a href="https://instagram.com/zidanngrwn" target="_blank">INSTAGRAM</a>
                 <a href="https://wa.me/628xxxxxxxxxx" target="_blank">WHATSAPP</a>
